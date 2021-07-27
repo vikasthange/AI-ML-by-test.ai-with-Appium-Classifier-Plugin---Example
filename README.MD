@@ -1,5 +1,5 @@
-##This project is the simplest demonstration of using the opensource Machine Learning model plugin "classifier" from test.ai with Appium for apps automation.
-#Prerequisite for MacOS:
+## This project is the simplest demonstration of using the opensource Machine Learning model plugin "classifier" from test.ai with Appium for apps automation.
+# Prerequisite for MacOS:
 1. Install Appium (minimum version 1.9)
    1. `npm install -g appium`
 2. Install Classifier plugin
@@ -9,7 +9,7 @@
    1. Follow Instructions from Android Studio
    2. Set ANDROID_HOME  to SDK and PATH to include adb, android binaries
 
-#Steps to Execute/Run  Test:
+# Steps to Execute/Run  Test:
 1. Start Appium server
    1. `appium`
 2. Run script.
