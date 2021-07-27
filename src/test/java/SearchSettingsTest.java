@@ -46,22 +46,20 @@ public class SearchSettingsTest {
         System.out.print("Launching app");
         driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         ((AndroidDriver)driver).startActivity(new Activity("com.android.settings","com.android.settings.Settings"));
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
     @Test
     public void testSearch() {
 
         System.out.println("Clicking on search");
-        driver.findElements(MobileBy.custom("ai:search")).size();
         driver.findElement(MobileBy.custom("ai:search")).click();
         System.out.println("typing bluetooth");
         new Actions(driver).sendKeys("bluetooth").build().perform();;
         System.out.println("clicking on bluetooth icon from search result");
         driver.findElement(MobileBy.custom("ai:bluetooth")).click();
         System.out.println("Reading screen title");
-        String actualTitle = driver.findElement(By.xpath("//*[@id='com.android.settings:id/action_bar']/android.widget.TextView")).getText();
-        String expectedTitle = "Connection preferences";
-        Assert.assertEquals(actualTitle,expectedTitle,"Screen title failed");
+        boolean connectionPrefIsDisplayed = driver.findElement(By.xpath("//*[contains(@text,'Connection preferences')]")).isDisplayed();
+        Assert.assertTrue(connectionPrefIsDisplayed,"Connection preferences - Screen not shown");
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){
