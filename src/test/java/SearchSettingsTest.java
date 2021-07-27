@@ -49,7 +49,7 @@ public class SearchSettingsTest {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
     @Test
-    public void testSearch() {
+    public void testSearch() throws InterruptedException {
 
         System.out.println("Clicking on search");
         driver.findElement(MobileBy.custom("ai:search")).click();
@@ -57,6 +57,7 @@ public class SearchSettingsTest {
         new Actions(driver).sendKeys("bluetooth").build().perform();;
         System.out.println("clicking on bluetooth icon from search result");
         driver.findElement(MobileBy.custom("ai:bluetooth")).click();
+        Thread.sleep(5000);// wait for some time to reload screen
         System.out.println("Reading screen title");
         boolean connectionPrefIsDisplayed = driver.findElement(By.xpath("//*[contains(@text,'Connection preferences')]")).isDisplayed();
         Assert.assertTrue(connectionPrefIsDisplayed,"Connection preferences - Screen not shown");
